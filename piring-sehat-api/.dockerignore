@@ -1,0 +1,24 @@
+# Ignore target/build artifacts
+target/
+*.jar
+
+# Ignore Docker-related temp files
+.dockerignore
+
+# Ignore IDE files
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore env files
+.env
+.env.*
