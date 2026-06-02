@@ -2,7 +2,7 @@
 # DOCKERFILE - PIRING SEHAT API (Spring Boot + Maven)
 # =====================================================================
 # Multi-stage build: Stage 1 build JAR, Stage 2 run JAR
-# Digunakan untuk deploy ke Render.com (Web Service - Docker)
+# Digunakan untuk deploy ke Railway (Web Service - Docker)
 # =====================================================================
 
 # ─── STAGE 1: Build ───
@@ -31,7 +31,7 @@ WORKDIR /app
 # Copy JAR dari stage builder
 COPY --from=builder /app/target/*.jar app.jar
 
-# Expose port (Render akan mengarahkan traffic ke port ini)
+# Expose port (Railway akan mengarahkan traffic ke port ini)
 EXPOSE 8080
 
 # Jalankan aplikasi Spring Boot dengan profil "production"
