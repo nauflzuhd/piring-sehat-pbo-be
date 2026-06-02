@@ -63,6 +63,10 @@ public class SecurityConfig {
                 .requestMatchers("/api/public/**").permitAll()
                 // Izinkan akses publik untuk membaca forum dan balasannya
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/forums", "/api/forums/**").permitAll()
+                
+                // 👉 PERBAIKAN: Mengizinkan akses publik untuk endpoint pencarian nutrisi makanan
+                .requestMatchers("/api/nutrition/**").permitAll()
+                
                 // Endpoint lainnya WAJIB melalui proses autentikasi (harus mengirimkan JWT valid)
                 .anyRequest().authenticated()
             )
@@ -106,8 +110,7 @@ public class SecurityConfig {
     /**
      * Bean JwtDecoder kustom yang menggunakan algoritma ES256 (Elliptic Curve)
      * untuk memvalidasi tanda tangan JWT yang diterbitkan oleh Supabase Auth.
-     * 
-     * Menggunakan Logger SLF4J standar industri untuk pencatatan, bukan System.out.
+     * * Menggunakan Logger SLF4J standar industri untuk pencatatan, bukan System.out.
      */
     @Bean
     public JwtDecoder jwtDecoder() {
